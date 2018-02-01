@@ -19,46 +19,81 @@ void myInit (void)
 
 void midPointCircleAlgo()
 {
+	int j=0;
 	for(int i=0;i<100;i+=10)
 		{
-			if(i==50){
-				glFlush ();
-				Sleep(3000);
-				glClear(GL_COLOR_BUFFER_BIT);
-			}
-	int x = 0;
-	int y = r+i;
-	float decision = 5/4 - r;
-	glVertex2i(x, y);
-
-	while (y > x)
-	{
-		if (decision < 0)
-		{
-			x++; 
-			decision += 2*x+1;
-		}
-		else
-		{
-			y--;
-			x++;
-			decision += 2*(x-y)+1;
-		}
+			Sleep(500);
+			glFlush();		
+			int x = 0;
+			int y = r+i;
+			float decision = 5/4 - r;
+			glVertex2i(x, y);
+			while (y > x)
+				{
+				if (decision < 0)
+					{
+						x++; 
+						decision += 2*x+1;
+					}
+				else
+				{
+					y--;
+					x++;
+					decision += 2*(x-y)+1;
+				}
+			glBegin(GL_POINTS);
+			glVertex2i(x, y);
 		
-		glBegin(GL_POINTS);
-		glVertex2i(x, y);
-		glVertex2i(x, -y);
-		glVertex2i(-x, y);
-		glVertex2i(-x, -y);
-		glVertex2i(y, x);
-		glVertex2i(-y, x);
-		glVertex2i(y, -x);
-		glVertex2i(-y, -x);
-		glEnd();
-		}
+			glVertex2i(x, -y);
+			glVertex2i(-x, y);
+			glVertex2i(-x, -y);
+			glVertex2i(y, x);
+			glVertex2i(-y, x);
+			glVertex2i(y, -x);
+			glVertex2i(-y, -x);
+			glEnd();
+			}
+				if(i>30)
+				{
+					int r1=r;
+					glColor3f(1,1,1);		
+					int x = 0;
+					int y = r1+j;
+					float decision = 5/4 - r;
+					glVertex2i(x, y);
+					while (y > x)
+					{
+						if (decision < 0)
+						{
+							x++; 
+							decision += 2*x+1;
+						}
+						else
+						{
+							y--;
+							x++;
+							decision += 2*(x-y)+1;
+						}
+						glBegin(GL_POINTS);
+						glVertex2i(x, y);
+						glVertex2i(x, -y);
+						glVertex2i(-x, y);
+						glVertex2i(-x, -y);
+						glVertex2i(y, x);
+						glVertex2i(-y, x);
+						glVertex2i(y, -x);
+						glVertex2i(-y, -x);
+						glEnd();
+					}
+					j+=10;
+					glColor3f(0,0,0);
+			
+				}
+	}
 	}
 
-}
+		
+
 
 void myDisplay(void)
 {
