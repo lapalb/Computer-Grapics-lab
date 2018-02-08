@@ -1,40 +1,35 @@
-#include <GL/glut.h>
-#include <iostream>
+#include< GL/glut.h > 
+#include< iostream >
 using namespace std;
 
-float a,b;
- void drawDot (GLint x, GLint y)
-{ 
-  glBegin (GL_POINTS);
-      glVertex2i (x,y);
+float a, b;
+void drawDot(GLint x, GLint y) {
+  glBegin(GL_POINTS);
+  glVertex2i(x, y);
   glEnd();
 }
 
-void symmetricPixels (int x, int y)
-{ drawDot ( x, y);
-  drawDot (- x,y);
-  drawDot ( x,- y);
-  drawDot (- x,- y);
+void symmetricPixels(int x, int y) {
+  drawDot(x, y);
+  drawDot(-x, y);
+  drawDot(x, -y);
+  drawDot(-x, -y);
 }
-
 void ellipse(int a, int b);
-void circle(int a)
-{
-	ellipse(a,a);
-	int z=a;
-	while(z>20)
-	{
-	z=z-20;
-	ellipse(a,z);
-	ellipse(z,a);
-	}
+void circle(int a) {
+  ellipse(a, a);
+  int z = a;
+  while (z > 20) {
+    z = z - 20;
+    ellipse(a, z);
+    ellipse(z, a);
+  }
 }
-void display()
-{
-	//ellipse(a,b);
-	//ellipse(a-20,b);
-	//ellipse(a-40,b);
-	circle(a);
+void display() {
+    //ellipse(a,b);
+    //ellipse(a-20,b);
+    //ellipse(a-40,b);
+    circle(a);
 }
 void ellipse(int a, int b)
 {
@@ -81,14 +76,14 @@ int aSq,bSq,twoASq,twoBSq,d,dx,dy,x,y;
   }
   glFlush();
 }    
-void init(void)
- {
-	 glPointSize(3);
- glClearColor (1.0, 1.0, 1.0,1.0);
- glClear(GL_COLOR_BUFFER_BIT);
-glColor3f(1.0,0.0,0.0);
- gluOrtho2D(-100, 100, -100, 100);
- }
+void init(void) {
+  glPointSize(2);
+  glClearColor(1.0, 1.0, 1.0, 1.0);
+  glClear(GL_COLOR_BUFFER_BIT);
+  glColor3f(0.5, 0.5, 0.5);
+  gluOrtho2D(-100, 100, -100, 100);
+}
+
 int main(int argc, char** argv)
 {
  cout<<"Enter a and b\n";
