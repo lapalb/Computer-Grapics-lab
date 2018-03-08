@@ -13,25 +13,22 @@ void init(void) {
 void display()
 {
 	float d;
+	//Calculating The reflected point x2,y2
 	d= (x + (y - c)*m)/(1 + m*m);
 	x2 = 2*d - x;
 	y2 = 2*d*m - y + 2*c;
-	//cout<<x2<<"\t"<<y2;
 	//Axes
 	glBegin(GL_LINES);
 	glVertex2i(100,0);
 	glVertex2i(-100,0);
 	glEnd();
-
 	glBegin(GL_LINES);
 	glVertex2i(0,100);
 	glVertex2i(0,-100);
 	glEnd();
-
 	//Axes End
-	
 
-	//Line Start
+	//Line Start. Line end point is the parameter that is given in Ortho2D(one is 100 and other is -100 and we calculate the y coordinate
 	x3=100.0;
 	x4=-100.0;
 	y3=m*x3 + c;
@@ -50,6 +47,8 @@ void display()
 	glEnd();
 	glFlush();
 	//End of original Point
+
+	//Reflected Point Plot
 	glBegin(GL_POINTS);
 	glVertex2f(x2,y2);
 	glEnd();
