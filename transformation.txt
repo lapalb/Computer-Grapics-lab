@@ -1,0 +1,43 @@
+#include <windows.h>  
+#include <GL/glut.h> 
+void initGL() {
+    glClearColor(0.0,0.0,0.0,0);
+  glColor3f(0.0,0.0,0.0);
+   // glViewport(-200 , -200 , 1000 , 1000);
+    gluOrtho2D(-15 ,15 , -15 , 15);
+}
+
+void display() {
+	 glClear(GL_COLOR_BUFFER_BIT);
+   glBegin(GL_QUADS);         
+      glColor3f(1.0f, 0.5f, 0.0f); 
+      glVertex2i(-5, -5);
+      glVertex2i(-3, -3);
+      glVertex2i(-5, -1);
+      glVertex2i( -7, -3);	 
+   glEnd();  
+   //Transformation matrix assuming c=5, rest all the points are determinate
+   float a=0.5,b=0.5,c=5,d=-0.5,e=0.5,f=0,g=0,h=0.5,i=2.5;
+    glBegin(GL_QUADS);         
+      glColor3f(1.0f, 0.5f, 0.0f); 
+      glVertex2i(-5*a-5*b+c, -5*d-5*e+f);
+      glVertex2i(-3*a-3*b+c, -3*d-3*e+f);
+      glVertex2i(-5*a-b+c, -5*d-e+f);
+      glVertex2i( -7*a-3*b+c, -7*d-3*e+f);	 
+   glEnd();  
+    glFlush();
+}
+ 
+ 
+s
+int main(int argc, char** argv) {
+   glutInit(&argc, argv);           
+   glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+   glutInitWindowSize(500, 500);  
+   glutInitWindowPosition(0, 0); 
+   glutCreateWindow("3D Shapes");  
+   initGL();   
+   glutDisplayFunc(display);                              
+   glutMainLoop();                 
+   return 0;
+}
